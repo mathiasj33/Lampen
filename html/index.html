@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="/html/style.css" type="text/css" rel="stylesheet">
+<title>Lampen</title>
+
+<script>
+	var maxSize = "55%";
+	var startSize = "50%";
+	var descs = [
+			"Lorem ipsum dolor sit amet, consetetur\
+			sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et\
+			dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et\
+			justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata\
+			sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,\
+			consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\
+			labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et\
+			accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no\
+			sea takimata sanctus est Lorem ipsum dolor sit amet.",
+
+			"Lorem ipsum dolor SIT amet, consetetur\
+			sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et\
+			dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et\
+			justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata\
+			sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,\
+			consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\
+			labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et\
+			accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no\
+			sea takimata sanctus est Lorem ipsum dolor sit amet.",
+
+			"Lampe 2 desc" ];
+
+	var margins = [ 0, 0, 0, 0, 0, 0, 0, 0 ];
+
+	$(document).ready(function() {
+		$(".smallImg").on("mouseenter", function() {
+			$(this).css("border", "2px solid green");
+		});
+		$(".smallImg").on("mouseleave", function() {
+			$(this).css("border", "0px")
+		});
+
+		$(".smallImg").on("click", function() {
+			var src = $(this).attr("src");
+			var index = getIndex($(this));
+			var desc = descs[index];
+			$(".modalImg").attr("src", src);
+			$("#modalDesc").html(desc);
+			var halfWidth = $("#lampModal").css("width").replace("px", "") / 2;
+			$("#lampModal").modal("show");
+		});
+	});
+
+	function getIndex(img) {
+		var src = img.attr("src");
+		var index = src.replace("/img/lampe", "");
+		index = index.replace(".jpg", "");
+		return index;
+	}
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Über uns</a></li>
+					<li><a href="#">Impressum</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="jumbotron text-center background">
+		<h1>Kunst</h1>
+		<p>Im P-Seminar Kunst am Oskar-von-Miller-Gymnasium haben Schüler
+			veschiedene Lampen gebaut</p>
+	</div>
+	<div class="container-fluid background2">
+		<div class="col-md-3 col-sm-4">
+			<div class="text-center">
+				<img src="/img/lampe2.jpg" class="smallImg img-circle"></img>
+				<img src="/img/lampe1.jpg" class="smallImg img-circle"></img>
+			</div>
+
+		</div>
+		<div class="col-md-3 col-sm-4">
+			<div class="text-center">
+				<img src="/img/lampe1.jpg" class="smallImg img-circle"></img>
+				<img src="/img/lampe2.jpg" class="smallImg img-circle"></img>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-4">
+			<div class="text-center">
+				<img src="/img/lampe2.jpg" class="smallImg img-circle"></img>
+				<img src="/img/lampe1.jpg" class="smallImg img-circle"></img>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="text-center">
+				<img src="/img/lampe1.jpg" class="smallImg img-circle"></img>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6">
+			<div class="text-center">
+				<img src="/img/lampe2.jpg" class="smallImg img-circle"></img>
+			</div>
+		</div>
+	</div>
+
+	<div id="lampModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="col-sm-6 text-center">
+							<img src="/img/lampe0.jpg" class="modalImg"></img>
+						</div>
+						<div id="modalDesc" class="col-sm-6"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
